@@ -14,4 +14,4 @@ ActiveStorage.start()
 
 import "controllers"
 import "styles/shared"
-import "styles/frontend"
+import "styles/backend"
