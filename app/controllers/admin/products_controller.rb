@@ -7,6 +7,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def new
     @product = Product.new
+    @product.skus.build
   end
 
   def create
@@ -42,6 +43,9 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def product_params
-    params.require(:product).permit(:name, :vendor_id, :list_price, :sell_price, :on_sell, :description)
+    params.require(:product).permit(:name, :vendor_id, :list_price, :sell_price, :on_sell, :description,
+                                    skus_attributes: [
+                                      :id, :spec, :quantity, :_destroy
+                                    ])
   end
 end
