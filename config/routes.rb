@@ -3,4 +3,10 @@ Rails.application.routes.draw do
   root 'products#index'
 
   resources :products, only: [:index, :show]
+
+  namespace :admin do
+    root 'products#index'
+    resources :products
+    resources :vendors, expect: [:show]
+  end
 end
