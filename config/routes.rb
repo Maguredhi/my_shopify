@@ -6,7 +6,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'products#index'
-    resources :products
-    resources :vendors, expect: [:show]
+    resources :products, except: [:show]
+    resources :vendors, except: [:show]
+  end
+
+  # POST /api/v1/subscribe
+  namespace :api do
+    namespace :v1 do
+      post 'subscribe', to: 'utils#subscribe'
+    end
   end
 end

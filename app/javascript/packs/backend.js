@@ -15,3 +15,7 @@ ActiveStorage.start()
 import "controllers"
 import "styles/shared"
 import "styles/backend"
+
+// enable action text
+require("trix")
+require("@rails/actiontext")
