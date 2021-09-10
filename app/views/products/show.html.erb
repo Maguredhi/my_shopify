@@ -38,7 +38,7 @@
             <div class="column is-9 field is-grouped">
               <div class="select is-fullwidth is-medium">
                 <select>
-                  <%= options_for_select(@product.skus.map { |p| [p.spec, p.id] }) %>
+                  <%= options_for_select(@product.skus.map { |p| [p.spec] }) %>
                 </select>
               </div>
             </div>
