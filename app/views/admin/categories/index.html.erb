@@ -2,6 +2,13 @@
 
 <%= link_to "新增分類", new_admin_category_path, class: 'button is-primary is-small' %>
 
+<article class="message">
+  <div class="message-body">
+    <i class="far fa-lightbulb"></i>&nbsp;
+    可使用拖拉調整分類順序
+  </div>
+</article>
+
 <table class="table is-fullwidth has-shadowed">
   <thead>
   <tr>
@@ -10,11 +17,16 @@
   </tr>
   </thead>
 
-  <tbody>
+  <tbody class="sortable-items">
     <% @categories.each do |category| %>
-      <tr>
-        <td><%= link_to category.name, edit_admin_category_path(category) %></td>
-        <td><%= link_to '刪除', admin_category_path(category), method: :delete, data: { confirm: '確認刪除？' }, class: 'button is-danger is-small' %></td>
+      <tr class="item" data-item="<%= dom_id(category) %>">
+        <td>
+          <i class="fas fa-bars"></i>&nbsp;
+          <%= link_to category.name, edit_admin_category_path(category) %>
+        </td>
+        <td>
+          <%= link_to '刪除', admin_category_path(category), method: :delete, data: { confirm: '確認刪除？' }, class: 'button is-danger is-small' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
