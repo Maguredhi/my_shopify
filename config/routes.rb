@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     root 'products#index'
     resources :products, except: [:show]
     resources :vendors, except: [:show]
+    resources :categories, except: [:show]
   end
 
   # POST /api/v1/subscribe
