@@ -4,6 +4,14 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
+  # 單數不會帶id
+  resource :cart, only: [:show, :destroy] do
+    collection do
+      get :checkout
+    end
+  end
+
+  resources :orders, except: [:new, :edit, :update, :destroy]
 
   namespace :admin do
     root 'products#index'
@@ -16,10 +24,11 @@ Rails.application.routes.draw do
     end
   end
 
-  # POST /api/v1/subscribe
   namespace :api do
     namespace :v1 do
+      # POST /api/v1/subscribe
       post 'subscribe', to: 'utils#subscribe'
+      post 'cart', to: 'utils#cart'
     end
   end
 end
