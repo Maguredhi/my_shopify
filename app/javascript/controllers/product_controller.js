@@ -23,10 +23,19 @@ export default class extends Controller {
         type: 'POST',
         dataType: 'json',
         success: (response) => {
+          if (response.status === 'ok') {
+            let item_count = response.items || 0;
+            // 發 event
+            let evt = new CustomEvent('addToCart', { 'detail': { item_count } });
+            document.dispatchEvent(evt);
+          }
           console.log(response);
         },
         error: (error) => {
           console.log(error);
+        },
+        complete: () => {
+          this.addToCartButtonTarget.classList.remove('is-loading');
         }
       });
     }

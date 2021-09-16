@@ -38,7 +38,8 @@
             <div class="column is-9 field is-grouped">
               <div class="select is-fullwidth is-medium">
                 <select data-product-target="sku">
-                  <%= options_for_select(@product.skus.map { |p| [p.spec] }) %>
+                  <!-- 用 p.id 去紀錄選擇的 sku -->
+                  <%= options_for_select(@product.skus.map { |p| [p.spec, p.id] }) %>
                 </select>
               </div>
             </div>
