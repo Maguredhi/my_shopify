@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
 
     current_cart.items.each do |item|
-      @order.order_items.build(sku: item.sku_id, quantity: item.quantity)
+      @order.order_items.build(sku_id: item.sku_id, quantity: item.quantity)
     end
 
     if @order.save
@@ -23,9 +23,15 @@ class OrdersController < ApplicationController
         }.to_json
       end
 
-      redirect_to root_path, notice: 'OK'
-    else
-      render 'carts/checkout'
+      result = JSON.parse(resp.body)
+
+      if result["returnCode"] == "0000"
+        payment_url = result["info"]["paymentUrl"]["web"]
+        redirect_to payment_url
+      else
+        flash[:notice] = '付款發生錯誤'
+        render 'carts/checkout'
+      end
     end
   end
 
