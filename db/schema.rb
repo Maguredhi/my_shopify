@@ -75,11 +75,12 @@ ActiveRecord::Schema.define(version: 2021_09_16_054043) do
 
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id", null: false
-    t.string "sku_belongs_to"
+    t.bigint "sku_id", null: false
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["sku_id"], name: "index_order_items_on_sku_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -161,6 +162,7 @@ ActiveRecord::Schema.define(version: 2021_09_16_054043) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "skus"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "vendors"
