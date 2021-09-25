@@ -1,0 +1,30 @@
+zh-TW:
+  activerecord:
+  button:
+    sign_up: 註冊
+    log_in: 登入
+    log_out: 登出
+  nav_bar:
+    search: 搜尋
+    keyword: 請輸入關鍵字
+    profile: 個人資料
+    order_list: 訂單記錄
+  google_map:
+    location: 公司位置
+  footer:
+    about_us: 關於我們
+    about: 關於 My_Shopify
+    privacy_policy: 隱私權保護政策
+    term_of_service: 服務條款
+    guest_service: 顧客服務
+    exchange: 退換貨說明
+    service: 客服中心
+    newsletter: 訂閱電子報
+    sub_placeholder: 請輸入您的 Email 信箱
+    submit: 送出
+  devise:
+    email: 電子信箱
+    password: 輸入密碼
+    confirmation: 密碼再次確認
+    forgot_password: 忘記密碼？
+    remember_me: 記住我

@@ -37,6 +37,7 @@ gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'acts_as_list', '~> 1.0', '>= 1.0.4'
 gem 'faraday', '~> 1.8'
 gem 'aasm', '~> 5.2'
+gem 'rails-i18n', '~> 6.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+  button:
+    sign_up: 登録
+    log_in: ログイン
+    log_out: ログアウト
+  nav_bar:
+    search: 検索
+    keyword: キーワードで探す
+    profile: プロフィール
+    order_list: 購入履歴
+  google_map:
+    location: アクセス
+  footer:
+    about_us: サイト利用について
+    about: My_Shopifyについて
+    privacy_policy: 個人情報保護方針
+    term_of_service: 利用規約
+    guest_service: 顧客サービス
+    exchange: 返金・交換について
+    service: お問い合わせ
+    newsletter: ストアニュースレター配信
+    sub_placeholder: Eメールアドレスを入力
+    submit: 登録
+  devise:
+    email: Eメール
+    password: パスワード
+    confirmation: パスワード確認
+    forgot_password: パスワード忘れた？
+    remember_me: ログインしたままにする
+

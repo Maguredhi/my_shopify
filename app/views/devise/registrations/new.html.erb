@@ -5,12 +5,12 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
-          <%= f.label :email, class: 'label' %>
+          <%= f.label :email, t('devise.email'), class: 'label' %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
         </div>
 
         <div class="field">
-          <%= f.label :password, class: 'label' %>
+          <%= f.label :password, t('devise.password'), class: 'label' %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %>
@@ -18,12 +18,19 @@
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation, class: 'label' %>
+          <%= f.label :password_confirmation, t('devise.confirmation'), class: 'label' %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Sign up", class: 'button is-primary is-medium' %>
+          <%= f.submit t('button.sign_up'), class: 'button is-primary mr-2' %>
+          <%- if devise_mapping.omniauthable? %>
+            <%- resource_class.omniauth_providers.each do |provider| %>
+              <%= link_to  omniauth_authorize_path(resource_name, provider), method: :post do %>
+                <%= image_pack_tag 'google_login.png', size: '190', style: 'border-radius: 2px;' %>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
       <% end %>
 
