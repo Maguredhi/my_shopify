@@ -1,12 +1,12 @@
 <section class="container">
 
-  <nav class="breadcrumb" aria-label="breadcrumbs">
+  <!--<nav class="breadcrumb" aria-label="breadcrumbs">
     <ul>
       <li><a href="#">健康養生</a></li>
       <li><a href="#">輔具器材</a></li>
       <li class="is-active"><a href="#" aria-current="page">按摩伸展</a></li>
     </ul>
-  </nav>
+  </nav>-->
 
   <div class="columns">
     <div class="column is-7">
@@ -15,7 +15,7 @@
       </figure>
 
       <article class="content">
-        <h4>產品特色</h4>
+        <h4 class="my-4"><%= t('product.description') %></h4>
         <p><%= @product.description %></p>
       </article>
     </div>
@@ -24,8 +24,10 @@
       <h3 class="has-text-grey-light"><%= @product.vendor.title %></h3>
       <h2 class="title is-4"><%= @product.name %></h2>
       <p class="has-text-primary is-size-4">
-        原價：<span class="list-price"><%= @product.list_price %></span><br />
-        特價：<span class="sell-price"><%= @product.sell_price %></span>
+        <%= t('product.list_price') %>：<span class="list-price"><%= @product.list_price %></span>
+      </p>
+      <p class="has-text-danger is-size-4">
+        <%= t('product.sell_price') %>：<span class="sell-price"><%= @product.sell_price %></span>
       </p>
       <hr>
 
@@ -33,7 +35,7 @@
         <div class="field">
           <div class="columns">
             <div class="column is-3 is-size-4 has-text-right">
-              品項
+              <%= t('product.item') %>
             </div>
             <div class="column is-9 field is-grouped">
               <div class="select is-fullwidth is-medium">
@@ -49,7 +51,7 @@
 
       <div class="columns">
         <div class="column is-3 is-size-4 has-text-right">
-          數量
+          <%= t('product.quantity') %>
         </div>
         <div class="column is-9 field is-grouped">
           <a href="#" class="button is-white is-medium" data-action="product#quantity_minus">-</a>
@@ -57,7 +59,7 @@
           <a href="#" class="button is-white is-medium" data-action="product#quantity_plus">+</a>
         </div>
       </div>
-      <a href="#" class="button is-primary is-medium is-fullwidth" data-product-target="addToCartButton" data-action="product#add_to_cart">加到購物車</a>
+      <a href="#" class="button is-primary is-medium is-fullwidth" data-product-target="addToCartButton" data-action="product#add_to_cart"><%= t('button.add_cart') %></a>
     </div>
   </div>
 </section>

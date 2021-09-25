@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root 'products#index'
+    root 'vendors#index'
     resources :products, except: [:show]
     resources :vendors, except: [:show]
     resources :categories, except: [:show] do

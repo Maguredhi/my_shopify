@@ -1,14 +1,14 @@
 <% if current_cart.empty? %>
-  <p>目前購物車是空的</p>
-  <%= link_to "繼續選購", root_path, class: 'button is-medium' %>
+  <p><%= t('cart.current_cart') %></p>
+  <%= link_to t('cart.continue_buy'), root_path, class: 'button mt-4' %>
 <% else %>
   <table class="table is-fullwidth">
     <thead>
       <tr>
-        <th>品項</th>
-        <th>單價</th>
-        <th>數量</th>
-        <th>小計</th>
+        <th><%= t('product.item') %></th>
+        <th><%= t('product.sell_price') %></th>
+        <th><%= t('product.quantity') %></th>
+        <th><%= t('cart.subtotal') %></th>
       </tr>
     </thead>
     <tbody>
@@ -23,11 +23,11 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="3">總價</td>
+        <td colspan="3"><%= t('cart.total_price') %></td>
         <td><%= current_cart.total_price %></td>
       </tr>
     </tfoot>
   </table>
-  <%= link_to "繼續選購", root_path, class: 'button is-medium' %>
-  <%= link_to "結帳", checkout_cart_path, class: 'button is-danger is-medium' %>
+  <%= link_to t('cart.continue_buy'), root_path, class: 'button' %>
+  <%= link_to t('cart.go_checkout'), checkout_cart_path, class: 'button is-danger' %>
 <% end %>
