@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
         productName: "My_Shpoify",
         amount: current_cart.total_price.to_i,
         currency: "TWD",
-        confirmUrl: "http://localhost:3000/orders/confirm",
+        confirmUrl: "https://my-shopify-rails.herokuapp.com/orders/confirm",
         orderId: @order.num
       })
 
@@ -75,10 +75,10 @@ class OrdersController < ApplicationController
   def pay
     linepay = LinepayService.new("/payments/request")
     linepay.perform({
-      productName: "Hello",
+      productName: "My_Shpoify",
       amount: @order.total_price.to_i,
       currency: "TWD",
-      confirmUrl: "http://localhost:3000/orders/#{@order.id}/pay_confirm",
+      confirmUrl: "https://my-shopify-rails.herokuapp.com/orders/#{@order.id}/pay_confirm",
       orderId: @order.num
     })
 
