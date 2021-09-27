@@ -1,49 +1,41 @@
-<footer class="footer has-background-white">
+<footer class="footer has-background-light">
   <section class="container">
     <div class="columns">
       <div class="column">
         <div class="menu">
-          <p class="menu-label">關於我們</p>
+          <p class="menu-label"><%= t('footer.about_us') %></p>
           <ul class="menu-list">
-            <li><a>關於 My_shopify</a></li>
-            <li><a>隱私權保護政策</a></li>
-            <li><a>服務條款</a></li>
+            <li><a><%= t('footer.about') %></a></li>
+            <li><a><%= t('footer.privacy_policy') %></a></li>
+            <li><a><%= t('footer.term_of_service') %></a></li>
           </ul>   
         </div>
       </div>
-
       <div class="column">
         <div class="menu">
-          <p class="menu-label">聯絡我們</p>
+          <p class="menu-label"><%= t('footer.guest_service') %></p>
           <ul class="menu-list">
-            <li><a>02.2393.2610</a></li>
-            <li><a>業務合作洽談</a></li>
+            <li><a><%= t('footer.exchange') %></a></li>
+            <li><a><%= t('footer.service') %></a></li>
           </ul>   
         </div>
       </div>
-
-      <div class="column">
+      <div class="column subscribe" data-controller="subscribe">
         <div class="menu">
-          <p class="menu-label">自助查詢</p>
-          <ul class="menu-list">
-            <li><a>銀行優惠說明</a></li>
-            <li><a>LINE Points 回饋說明</a></li>
-            <li><a>預購商品查詢</a></li>
-            <li><a>訂單出貨查詢</a></li>
-            <li><a>配送進度查詢</a></li>
-          </ul>   
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="menu">
-          <p class="menu-label">顧客服務</p>
-          <ul class="menu-list">
-            <li><a>VIEWS生活誌</a></li>
-            <li><a>會員回饋計畫</a></li>
-            <li><a>退換貨說明</a></li>
-            <li><a>客服中心</a></li>
-          </ul>   
+          <p class="menu-label"><%= t('footer.newsletter') %></p>
+          <form action="#">
+            <div class="field has-addons">
+              <div class="control has-icons-left is-expanded">
+                <input type="email" data-subscribe-target="email" placeholder="<%= t('footer.sub_placeholder') %>" name="email" class="input is-rounded">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </div>
+              <div class="control">
+                <input type="submit" data-action="subscribe#add" value="<%= t('footer.submit') %>" class="button is-primary is-rounded">
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -12,14 +12,14 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
+    <div class="navbar-start hidden">
       <div class="navbar-item field has-addons">
         <div class="control">
-          <input class="input" type="text" placeholder="輸入關鍵字">
+          <input class="input" type="text" placeholder="<%= t('nav_bar.keyword') %>">
         </div>
         <div class="control">
           <a class="button is-primary">
-            <i class="fas fa-search"></i>&nbsp; 搜尋
+            <i class="fas fa-search"></i>&nbsp; <%= t('nav_bar.search') %>
           </a>
         </div>
       </div>
@@ -42,17 +42,30 @@
                 <i class="fas fa-user"></i>&nbsp;<%= current_user.email %>
               </a>
               <div class="navbar-dropdown">
-                <%= link_to "個人資料", edit_user_registration_path, class: 'navbar-item' %>
-                <%= link_to "訂單記錄", orders_path, class: 'navbar-item' %>
+                <%= link_to t('nav_bar.profile'), edit_user_registration_path, class: 'navbar-item' %>
+                <%= link_to t('nav_bar.order_list'), orders_path, class: 'navbar-item' %>
                 <hr class="navbar-divider">
-                <%= link_to "登出", destroy_user_session_path, method: :delete, class: 'navbar-item' %>
+                <%= link_to t('nav_bar.log_out'), destroy_user_session_path, method: :delete, class: 'navbar-item' %>
               </div>
             </div>
           <% else %>
-            <%= link_to "註冊", new_user_registration_path, class: 'button is-primary' %>
-            <%= link_to "登入", new_user_session_path, class: 'button is-light' %>
+            <%= link_to t('button.sign_up'), new_user_registration_path, class: 'button is-primary' %>
+            <%= link_to t('button.log_in'), new_user_session_path, class: 'button is-light' %>
           <% end %>
         </div>
+      </div>
+      <div class="navbar-item lang">
+        <% if I18n.locale.to_s == "ja"%>
+          <%= link_to locale: "zh-TW", class: 'is-small' do %>
+            <i class="fas fa-sync-alt"></i>
+            繁中
+          <% end %>
+        <% else %>
+          <%= link_to locale: "ja", class: 'is-small' do %>
+            <i class="fas fa-sync-alt"></i>
+            日本語
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

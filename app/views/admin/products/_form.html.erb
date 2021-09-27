@@ -1,3 +1,10 @@
+<% if vendor.errors.any? %>
+  <div class="notification is-danger is-light">
+    <i class="fas fa-exclamation-circle"></i>
+    <%= vendor.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
 <%= form_with(model: [:admin, product]) do |form| %>
 
   <div>

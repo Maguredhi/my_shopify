@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       # 打API
       linepay = LinepayService.new("/payments/request")
       linepay.perform({
-        productName: "Hello",
+        productName: "My_Shpoify",
         amount: current_cart.total_price.to_i,
         currency: "TWD",
         confirmUrl: "http://localhost:3000/orders/confirm",
@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
 
       # 2. 清空購物車
       session[:cart_session] = nil
-      redirect_to root_path, notice: '付款已完成'
+      redirect_to root_path, notice: t('cart.checkout_done')
     else
       redirect_to root_path, notice: '付款發生錯誤'
     end

@@ -1,0 +1,18 @@
+<p class="has-background-light has-text-centered is-size-4 py-4"><%= t('google_map.location') %></p>
+<div id="map" style="width:100%;height:400px;"></div>
+<script>
+  let map;
+
+  function initMap() {
+    const localtion = { lat: 25.0335398, lng: 121.5620666 }
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: localtion,
+      zoom: 16,
+    });
+    const marker = new google.maps.Marker({
+      position: localtion,
+      map: map,
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_map_api_key'] %>&callback=initMap"></script>

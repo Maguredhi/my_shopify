@@ -1,0 +1,65 @@
+ja:
+  activerecord:
+  button:
+    sign_up: 登録
+    log_in: ログイン
+    log_out: ログアウト
+    add_cart: カートに入れる
+    pay: 購入手続きへ
+    cancel: キャンセル
+  nav_bar:
+    search: 検索
+    keyword: キーワードで探す
+    profile: プロフィール
+    order_list: 購入履歴
+  google_map:
+    location: アクセス
+  footer:
+    about_us: サイト利用について
+    about: My_Shopifyについて
+    privacy_policy: 個人情報保護方針
+    term_of_service: 利用規約
+    guest_service: 顧客サービス
+    exchange: 返金・交換について
+    service: お問い合わせ
+    newsletter: ストアニュースレター配信
+    sub_placeholder: Eメールアドレスを入力
+    submit: 登録
+  devise:
+    email: Eメール
+    password: パスワード
+    confirmation: パスワードを確認
+    forgot_password: パスワードを忘れた？
+    remember_me: ログインしたままにする
+    name: お名前
+    current_password: 更新するためパスワードを入力
+    update: 更新
+  product:
+    item: 商品
+    list_price: 原価
+    sell_price: 限定価格
+    quantity: 数量
+    description: この商品について
+  cart:
+    cart: カート
+    current_cart: カート内に商品がありません
+    clear_cart: 全て削除
+    continue_buy: お買い物を続ける
+    subtotal: 小計
+    total_price: 商品合計
+    go_checkout: 購入手続きへ
+    checkout: お会計
+    info: 配送先情報
+    recipient: 受取人
+    address: ご住所
+    tel: 電話番号
+    note: お問合わせ
+    checkout_confirm: お会計しますか？
+    checkout_done: 注文成功
+    have_to_input: は必須入力フィールド
+  order:
+    date: 日付
+    order_number: 注文番号
+    order_price: 注文金額
+    status: 状態
+    feature: 機能

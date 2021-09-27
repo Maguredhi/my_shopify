@@ -1,0 +1,65 @@
+zh-TW:
+  activerecord:
+  button:
+    sign_up: 註冊
+    log_in: 登入
+    log_out: 登出
+    add_cart: 加到購物車
+    pay: 付款
+    cancel: 取消
+  nav_bar:
+    search: 搜尋
+    keyword: 請輸入關鍵字
+    profile: 個人資料
+    order_list: 訂單記錄
+  google_map:
+    location: 公司位置
+  footer:
+    about_us: 關於我們
+    about: 關於 My_Shopify
+    privacy_policy: 隱私權保護政策
+    term_of_service: 服務條款
+    guest_service: 顧客服務
+    exchange: 退換貨說明
+    service: 客服中心
+    newsletter: 訂閱電子報
+    sub_placeholder: 請輸入您的 Email 信箱
+    submit: 送出
+  devise:
+    email: 電子信箱
+    password: 輸入密碼
+    confirmation: 密碼再次確認
+    forgot_password: 忘記密碼？
+    remember_me: 記住我
+    name: 姓名
+    current_password: 更新資料請輸入密碼
+    update: 更新
+  product:
+    item: 品項
+    list_price: 原價
+    sell_price: 特價
+    quantity: 數量
+    description: 產品介紹
+  cart:
+    cart: 購物車
+    current_cart: 目前購物車是空的
+    clear_cart: 清空購物車
+    continue_buy: 繼續選購
+    subtotal: 小計
+    total_price: 總價
+    go_checkout: 進行結帳
+    checkout: 結帳
+    info: 收件人資訊
+    recipient: 收件人
+    address: 地址
+    tel: 電話
+    note: 備註
+    checkout_confirm: 確定結帳？
+    checkout_done: 付款已完成
+    have_to_input: 為必填欄位
+  order:
+    date: 日期
+    order_number: 訂單編號
+    order_price: 訂單金額
+    status: 狀態
+    feature: 功能
