@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
       linepay.perform({
         productName: "My_Shpoify",
         amount: current_cart.total_price.to_i,
-        currency: "TWD",
+        currency: "JPY",
         confirmUrl: "https://my-shopify-rails.herokuapp.com/orders/confirm",
         orderId: @order.num
       })
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
     linepay = LinepayService.new("/payments/#{params[:transactionId]}/confirm")
     linepay.perform({
       amount: current_cart.total_price.to_i,
-      currency: "TWD"
+      currency: "JPY"
     })
 
     if linepay.success?
@@ -77,7 +77,7 @@ class OrdersController < ApplicationController
     linepay.perform({
       productName: "My_Shpoify",
       amount: @order.total_price.to_i,
-      currency: "TWD",
+      currency: "JPY",
       confirmUrl: "https://my-shopify-rails.herokuapp.com/orders/#{@order.id}/pay_confirm",
       orderId: @order.num
     })
@@ -93,7 +93,7 @@ class OrdersController < ApplicationController
     linepay = LinepayService.new("/payments/#{params[:transactionId]}/confirm")
     linepay.perform({
       amount: @order.total_price.to_i,
-      currency: "TWD"
+      currency: "JPY"
     })
 
     if linepay.success?
