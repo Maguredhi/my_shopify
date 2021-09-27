@@ -35,6 +35,7 @@ ja:
     current_password: 更新するためパスワードを入力
     update: 更新
   product:
+    store_name: 店舗
     item: 商品
     list_price: 原価
     sell_price: 限定価格

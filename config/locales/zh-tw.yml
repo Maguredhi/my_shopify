@@ -35,6 +35,7 @@ zh-TW:
     current_password: 更新資料請輸入密碼
     update: 更新
   product:
+    store_name: 店名
     item: 品項
     list_price: 原價
     sell_price: 特價
