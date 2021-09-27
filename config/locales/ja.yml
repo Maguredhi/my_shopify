@@ -5,7 +5,8 @@ ja:
     log_in: ログイン
     log_out: ログアウト
     add_cart: カートに入れる
-    # cancel: 
+    pay: 購入手続きへ
+    cancel: キャンセル
   nav_bar:
     search: 検索
     keyword: キーワードで探す
@@ -55,7 +56,9 @@ ja:
     note: お問合わせ
     checkout_confirm: お会計しますか？
     checkout_done: 注文成功
-  # order:
-  #   date:
-  #   order_number:
-  #   status:
+  order:
+    date: 日付
+    order_number: 注文番号
+    order_price: 注文金額
+    status: 状態
+    feature: 機能

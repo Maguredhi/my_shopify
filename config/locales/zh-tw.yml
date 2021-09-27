@@ -5,6 +5,8 @@ zh-TW:
     log_in: 登入
     log_out: 登出
     add_cart: 加到購物車
+    pay: 付款
+    cancel: 取消
   nav_bar:
     search: 搜尋
     keyword: 請輸入關鍵字
@@ -54,3 +56,9 @@ zh-TW:
     note: 備註
     checkout_confirm: 確定結帳？
     checkout_done: 付款已完成
+  order:
+    date: 日期
+    order_number: 訂單編號
+    order_price: 訂單金額
+    status: 狀態
+    feature: 功能
