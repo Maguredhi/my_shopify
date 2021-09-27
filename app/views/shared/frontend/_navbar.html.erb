@@ -49,6 +49,14 @@
               </div>
             </div>
           <% else %>
+            <div class="nvabar-item mr-4" data-controller="cart">
+              <%= link_to cart_path do %>
+                <i class="fas fa-shopping-cart"></i>
+                <span data-cart-target="count" data-action="addToCart@document->cart#updateCart">
+                  (<%= current_cart.items.count %>)
+                </span>
+              <% end %>
+            </div>
             <%= link_to t('button.sign_up'), new_user_registration_path, class: 'button is-primary' %>
             <%= link_to t('button.log_in'), new_user_session_path, class: 'button is-light' %>
           <% end %>
