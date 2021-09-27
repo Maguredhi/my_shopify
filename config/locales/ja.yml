@@ -56,6 +56,7 @@ ja:
     note: お問合わせ
     checkout_confirm: お会計しますか？
     checkout_done: 注文成功
+    have_to_input: は必須入力フィールド
   order:
     date: 日付
     order_number: 注文番号

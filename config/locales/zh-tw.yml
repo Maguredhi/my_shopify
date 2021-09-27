@@ -56,6 +56,7 @@ zh-TW:
     note: 備註
     checkout_confirm: 確定結帳？
     checkout_done: 付款已完成
+    have_to_input: 為必填欄位
   order:
     date: 日期
     order_number: 訂單編號

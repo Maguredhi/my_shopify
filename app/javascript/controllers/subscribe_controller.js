@@ -26,9 +26,6 @@ export default class extends Controller {
           case 'duplicated':
             alert(`${response.email} 已經訂閱過囉`)
             break;
-          default:
-            alert('請輸入正確的 Email')
-            break;
         }
         console.log(response);
       },
