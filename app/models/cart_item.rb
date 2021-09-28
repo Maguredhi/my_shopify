@@ -3,7 +3,7 @@ class CartItem
 
   def initialize(sku_id, quantity = 1)
     @sku_id = sku_id
-    @quantity = quantity
+    @quantity = quantity.to_i
   end
 
   def increment!(n = 1)

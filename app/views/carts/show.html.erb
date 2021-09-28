@@ -3,7 +3,7 @@
     <h1 class="title"><%= t('cart.cart') %></h1>
   <% else %>
     <h1 class="title"><%= t('cart.cart') %>
-      <%= link_to cart_path, class: 'is-size-5', method: :delete, data: {confirm: '確定清空購物車？'} do %>
+      <%= link_to cart_path, class: 'is-size-5', method: :delete, data: {confirm: t('cart.clear_confirm') } do %>
         <i class="far fa-trash-alt"></i>
         <span><%= t('cart.clear_cart') %></span>
       <% end %>

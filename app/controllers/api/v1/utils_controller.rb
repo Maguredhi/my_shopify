@@ -15,10 +15,10 @@ class Api::V1::UtilsController < ApplicationController
     product = Product.joins(:skus).find_by(skus: { id: params[:sku] })
 
     if product
-      current_cart.add_sku(params[:sku])
+      current_cart.add_product(params[:sku], params[:quantity])
       session[:cart_session] = current_cart.serialize
 
-      render json: { status: 'ok', items: current_cart.items.count }
+      render json: { status: 'ok', items: current_cart.items.count, quantity: params[:quantity] }
     end
     # render json: params
   end

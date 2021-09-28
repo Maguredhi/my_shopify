@@ -1,17 +1,11 @@
-<div id="carousel" class="carousel">
-  <div class="item-1">
-    <%= image_pack_tag 'cats/cat1.jpeg' %>
-  </div>
-  <div class="item-2">
-    <%= image_pack_tag 'cats/cat2.jpeg' %>
-  </div>
-  <div class="item-3">
-    <%= image_pack_tag 'cats/cat3.jpeg' %>
-  </div>
-  <div class="item-4">
-    <%= image_pack_tag 'cats/cat4.jpeg' %>
-  </div>
-  <div class="item-5">
-    <%= image_pack_tag 'cats/cat5.jpeg' %>
-  </div>
+<div id="carousel">
+  <% products.each_with_index do |product, index| %>
+    <div class="item-<%= index %>">
+      <figure class="image">
+        <%= link_to product do %>
+          <%= image_tag product.cover_image if product.cover_image.attached? %>
+        <% end %>
+      </figure>
+    </div>
+  <% end %>
 </div>

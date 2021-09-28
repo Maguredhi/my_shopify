@@ -16,17 +16,29 @@ body {
   border-radius: 6px;
 }
 
+#carousel {
+  figure {
+    border-top: solid 4px;
+    border-bottom: solid 4px;
+    border-right: solid 2px;
+    border-left: solid 2px;
+  }
+}
+
 .hidden {
-  display:none
+  display: none
+}
+
+.main-light-color {
+  background-color: #F5F5F5;
 }
 
 .line-button {
-  background-color: #38BF5B; 
-  color: white; 
-  font-weight:bold;
+  background-color: #38BF5B;
+  color: white;
+  font-weight: bold;
   border-radius: 10px;
 }
-
 
 section.subscribe {
   h3 {
@@ -58,6 +70,10 @@ section.subscribe {
 
 .mr-2 {
   margin-right: 4px;
+}
+
+.mr-4 {
+  margin-right: 8px;
 }
 
 .py-4 {
