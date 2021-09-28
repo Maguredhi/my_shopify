@@ -8,7 +8,7 @@ class CartsController < ApplicationController
 
   def destroy
     session[:cart_session] = nil
-    redirect_to root_path, notice: '購物車已清空'
+    redirect_to root_path, notice: t('notice.clear_cart_message')
   end
 
   def checkout

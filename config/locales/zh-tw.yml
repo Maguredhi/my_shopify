@@ -56,6 +56,7 @@ zh-TW:
     tel: 電話
     note: 備註
     checkout_confirm: 確定結帳？
+    clear_confirm: 確定清空購物車？
     checkout_done: 付款已完成
     have_to_input: 為必填欄位
   order:
@@ -64,3 +65,5 @@ zh-TW:
     order_price: 訂單金額
     status: 狀態
     feature: 功能
+  notice:
+    clear_cart_message: 購物車已清空。

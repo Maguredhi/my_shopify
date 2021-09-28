@@ -56,6 +56,7 @@ ja:
     tel: 電話番号
     note: お問合わせ
     checkout_confirm: お会計しますか？
+    clear_confirm: カート内に商品全て削除、大丈夫ですか？
     checkout_done: 注文成功
     have_to_input: は必須入力フィールド
   order:
@@ -64,3 +65,5 @@ ja:
     order_price: 注文金額
     status: 状態
     feature: 機能
+  notice:
+    clear_cart_message: 全て商品をカートから削除しました。

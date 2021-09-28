@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container box mb-4">
 
   <!--<nav class="breadcrumb" aria-label="breadcrumbs">
     <ul>
@@ -10,9 +10,11 @@
 
   <div class="columns">
     <div class="column is-7">
-      <figure class="image">
-        <%= image_tag @product.cover_image.variant(resize: '770x520') if @product.cover_image.attached? %>
-      </figure>
+      <div class="card-image">
+        <figure class="image ">
+          <%= image_tag @product.cover_image.variant(resize: '770x520') if @product.cover_image.attached? %>
+        </figure>
+      </div>
 
       <article class="content my-4">
         <h4 class="my-4"><%= t('product.description') %></h4>
