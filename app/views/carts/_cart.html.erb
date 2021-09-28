@@ -6,7 +6,8 @@
     <thead>
       <tr>
         <th><%= t('product.item') %></th>
-        <th><%= t('product.sell_price') %></th>
+        <th><%= t('product.list_price') %> / <%= t('product.sell_price') %></th>
+        <th>Sku</th>
         <th><%= t('product.quantity') %></th>
         <th><%= t('cart.subtotal') %></th>
       </tr>
@@ -15,7 +16,8 @@
       <% current_cart.items.each do |item| %>
         <tr>
           <td><%= item.product.name %></td>
-          <td><%= item.product.sell_price %></td>
+          <td><%= item.product.list_price %> / <%= item.product.sell_price %></td>
+          <td><%= find_sku(item.sku_id).spec %></td>
           <td><%= item.quantity %></td>
           <td><%= item.total_price %></td>
         </tr>
@@ -23,7 +25,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="3"><%= t('cart.total_price') %></td>
+        <td colspan="4"><%= t('cart.total_price') %></td>
         <td><%= current_cart.total_price %></td>
       </tr>
     </tfoot>
