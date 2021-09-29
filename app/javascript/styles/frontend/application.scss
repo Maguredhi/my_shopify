@@ -1,4 +1,5 @@
 @import 'bulma-carousel';
+@import "./google_button.scss";
 
 body {
   display: flex;
@@ -26,11 +27,11 @@ body {
 }
 
 .hidden {
-  display: none
+  display: none;
 }
 
 .flex {
-  display: flex
+  display: flex;
 }
 
 .main-light-color {
