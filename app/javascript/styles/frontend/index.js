@@ -1,4 +1,5 @@
 import './application.scss'
+import './google_button.scss'
 import bulmaCarousel from 'bulma-carousel';
 
 // render carousel
