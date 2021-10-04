@@ -3,7 +3,6 @@ ja:
   button:
     sign_up: 登録
     log_in: ログイン
-    log_out: ログアウト
     add_cart: カートに入れる
     pay: 購入手続きへ
     cancel: キャンセル
@@ -12,6 +11,7 @@ ja:
     keyword: キーワードで探す
     profile: プロフィール
     order_list: 購入履歴
+    log_out: ログアウト
   google_map:
     location: アクセス
   footer:
@@ -67,3 +67,47 @@ ja:
     feature: 機能
   notice:
     clear_cart_message: 全て商品をカートから削除しました。
+  admin:
+    nav_bar:
+      vendor: 会社
+      product: 商品
+      category: 分類
+    button:
+      edit: 編集
+      delete: 削除
+      add_vendor: 会社追加
+      add_product: 商品追加
+      add_category: 分類追加
+    vendor:
+      name: 会社名前
+      list: 会社リスト
+      description: 説明
+      online: 営業してますか？
+      updated_at: 最後更新時間
+      delete_confirm: 削除できますか?
+      add_vendor: 会社追加
+      edit_vendor: 会社編集
+    product:
+      name: 商品名前
+      list: 商品リスト
+      code: 商品番号
+      image: 商品画像
+      list_price: 原価
+      sell_price: 限定価格
+      on_sell: 販售してますか？
+      description: この商品について
+      updated_at: 最後更新時間
+      delete_confirm: 削除できますか?
+      add_product: 商品追加
+      edit_product: 商品編集
+      sku: 在庫管理
+      add_sku: 在庫追加
+      sku_spec: 仕様
+      sku_quantity: 数量
+    category:
+      name: 分類名前
+      list: 分類リスト
+      delete_confirm: 削除できますか?
+      add_category: 分類追加
+      edit_category: 分類編集
+      category_info: 分類リストの順番を入れ替えます。

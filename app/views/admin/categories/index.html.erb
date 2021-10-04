@@ -1,20 +1,20 @@
-<h1 class="title">分類列表</h1>
+<h1 class="title"><%= t('admin.category.list') %></h1>
 
-<%= link_to "新增分類", new_admin_category_path, class: 'button is-primary is-small' %>
+<%= link_to t('admin.category.add_category'), new_admin_category_path, class: 'button is-primary is-small' %>
 
 <article class="message">
   <div class="message-body">
     <i class="far fa-lightbulb"></i>&nbsp;
-    可使用拖拉調整分類順序
+    <%= t('admin.category.category_info') %>
   </div>
 </article>
 
 <table class="table is-fullwidth has-shadowed">
   <thead>
-  <tr>
-    <th>名稱</th>
-    <th></th>
-  </tr>
+    <tr>
+      <th><%= t('admin.category.name') %></th>
+      <th></th>
+    </tr>
   </thead>
 
   <tbody class="sortable-items">
@@ -25,7 +25,8 @@
           <%= link_to category.name, edit_admin_category_path(category) %>
         </td>
         <td>
-          <%= link_to '刪除', admin_category_path(category), method: :delete, data: { confirm: '確認刪除？' }, class: 'button is-danger is-small' %>
+          <%= link_to t('admin.button.edit'), edit_admin_category_path(category), class: 'button is-light is-small' %>
+          <%= link_to t('admin.button.delete'), admin_category_path(category), method: :delete, data: { confirm: t('admin.category.delete_confirm') }, class: 'button is-danger is-small' %>
         </td>
       </tr>
     <% end %>

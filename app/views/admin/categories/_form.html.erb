@@ -7,7 +7,7 @@
 
 <%= form_with(model: [:admin, category]) do |form| %>
   <div class="field">
-    <%= form.label :name, '名稱', class: 'label' %>
+    <%= form.label :name, t('admin.category.name'), class: 'label' %>
     <%= form.text_field :name, class: 'input is-medium' %>
   </div>
 

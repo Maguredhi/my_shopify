@@ -3,7 +3,6 @@ zh-TW:
   button:
     sign_up: 註冊
     log_in: 登入
-    log_out: 登出
     add_cart: 加到購物車
     pay: 付款
     cancel: 取消
@@ -12,6 +11,7 @@ zh-TW:
     keyword: 請輸入關鍵字
     profile: 個人資料
     order_list: 訂單記錄
+    log_out: 登出
   google_map:
     location: 公司位置
   footer:
@@ -40,7 +40,7 @@ zh-TW:
     list_price: 原價
     sell_price: 特價
     quantity: 數量
-    description: 產品介紹
+    description: 商品介紹
   cart:
     cart: 購物車
     current_cart: 目前購物車是空的
@@ -67,3 +67,47 @@ zh-TW:
     feature: 功能
   notice:
     clear_cart_message: 購物車已清空。
+  admin:
+    nav_bar:
+      vendor: 廠商
+      product: 商品
+      category: 分類
+    button:
+      edit: 編輯
+      delete: 刪除
+      add_vendor: 新增廠商
+      add_product: 新增商品
+      add_category: 新增分類
+    vendor:
+      name: 廠商名稱
+      list: 廠商列表
+      description: 說明
+      online: 是否營業中？
+      updated_at: 最後更新時間
+      delete_confirm: 確認刪除?
+      add_vendor: 新增廠商
+      edit_vendor: 編輯廠商
+    product:
+      name: 商品名稱
+      list: 商品列表
+      code: 商品編號
+      image: 商品主圖
+      list_price: 原價
+      sell_price: 特價
+      on_sell: 是否販售中？
+      description: 商品介紹
+      updated_at: 最後更新時間
+      delete_confirm: 確認刪除?
+      add_product: 新增商品
+      edit_product: 編輯商品
+      sku: 庫存項目
+      add_sku: 新增庫存
+      sku_spec: 規格
+      sku_quantity: 數量
+    category:
+      name: 分類名稱
+      list: 分類列表
+      delete_confirm: 確認刪除?
+      add_category: 新增分類
+      edit_category: 編輯分類
+      category_info: 可使用拖拉調整分類順序

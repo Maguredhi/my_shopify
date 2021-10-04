@@ -8,7 +8,7 @@
 <%= form_with(model: [:admin, product]) do |form| %>
 
   <div>
-    <span>商品主圖：</span><%= form.file_field :cover_image %>
+    <span><%= t('admin.product.image') %>：</span><%= form.file_field :cover_image %>
   </div>
   <%= image_tag form.object.cover_image.variant(resize: '600x400') if form.object.cover_image.attached? %>
   <hr>
@@ -16,13 +16,13 @@
   <div class="columns">
     <div class="column is-6">
       <div class="field">
-        <%= form.label :name, '商品名稱', class: 'label' %>
+        <%= form.label :name, t('admin.product.name'), class: 'label' %>
         <%= form.text_field :name, class: 'input is-medium' %>
       </div>
     </div>
     <div class="column is-3">
       <div class="field">
-        <%= form.label :vendor_id, '廠商', class: 'label' %>
+        <%= form.label :vendor_id, t('admin.vendor.name'), class: 'label' %>
         <div class="select is-medium is-fullwidth">
           <%= form.collection_select :vendor_id, Vendor.available, :id, :title %>
         </div>
@@ -31,7 +31,7 @@
 
     <div class="column is-3">
       <div class="field">
-        <%= form.label :category_id, '分類', class: 'label' %>
+        <%= form.label :category_id, t('admin.category.name'), class: 'label' %>
         <div class="select is-medium is-fullwidth">
           <%= form.collection_select :category_id, Category.all, :id, :name %>
         </div>
@@ -42,13 +42,13 @@
   <div class="columns">
     <div class="column">
       <div class="field">
-        <%= form.label :list_price, '定價', class: 'label' %>
+        <%= form.label :list_price, t('admin.product.list_price'), class: 'label' %>
         <%= form.number_field :list_price, class: 'input is-medium' %>
       </div>
     </div>
     <div class="column">
       <div class="field">
-        <%= form.label :sell_price, '售價', class: 'label' %>
+        <%= form.label :sell_price, t('admin.product.sell_price'), class: 'label' %>
         <%= form.number_field :sell_price, class: 'input is-medium' %>
       </div>
     </div>
@@ -56,16 +56,16 @@
 
   <div class="field">
     <%= form.check_box :on_sell %>
-    <%= form.label :on_sell, '是否上架？', class: 'checkbox' %>
+    <%= form.label :on_sell, t('admin.product.on_sell'), class: 'checkbox' %>
   </div>
 
   <div class="field">
-    <%= form.label :description, '商品描述', class: 'label' %>
+    <%= form.label :description, t('admin.product.description'), class: 'label' %>
     <%= form.rich_text_area :description %>
   </div>
 
   <hr>
-  <h3>庫存項目</h3>
+  <h3><%= t('admin.product.sku') %></h3>
 
   <div data-controller="product-form">
     <template data-product-form-target="template">
@@ -79,7 +79,7 @@
     <% end %>
 
     <div data-product-form-target="link">
-      <%= link_to "新增品項", "#", class: 'button is-light is-small', data: { action: 'product-form#add_sku' } %>
+      <%= link_to t('admin.product.add_sku'), "#", class: 'button is-light is-small', data: { action: 'product-form#add_sku' } %>
     </div>
   </div>
 
