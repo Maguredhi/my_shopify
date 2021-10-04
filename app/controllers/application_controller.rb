@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :find_categories, unless: :backend?
   before_action :set_locale
   helper_method :current_cart
+  helper_method :local_datetime
 
   private
 
@@ -31,5 +32,9 @@ class ApplicationController < ActionController::Base
     end
 
     I18n.locale = session[:locale] || I18n.default_locale
+  end
+
+  def local_datetime(updated_at)
+    updated_at.localtime.strftime("%Y-%m-%d %H:%M")
   end
 end

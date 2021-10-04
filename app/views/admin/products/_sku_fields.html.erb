@@ -2,18 +2,18 @@
   <div class="column is-6">
     <div class="field">
       <%#= form.label :spec, '規格', class: 'label' %>
-      <%= form.text_field :spec, placeholder: '規格', class: 'input' %>
+      <%= form.text_field :spec, placeholder: t('admin.product.sku_spec'), class: 'input' %>
     </div>
   </div>
   <div class="column is-2">
     <div class="field">
       <%#= form.label :quantity, '數量', class: 'label' %>
-      <%= form.number_field :quantity, placeholder: '數量', class: 'input' %>
+      <%= form.number_field :quantity, placeholder: t('admin.product.sku_quantity'), class: 'input' %>
     </div>
   </div>
   <div class="column is-1">
     <div class="field">
-      <%= link_to "刪除", "#", class: 'button is-danger', data: { action: 'product-form#remove_sku' } %>
+      <%= link_to t('admin.button.delete'), "#", class: 'button is-danger', data: { action: 'product-form#remove_sku' } %>
     </div>
   </div>
   <!-- Rails nested-form 寫法，判斷是否需要刪除 -->
