@@ -39,6 +39,7 @@ gem 'faraday', '~> 1.8'
 gem 'aasm', '~> 5.2'
 gem 'rails-i18n', '~> 6.0'
 gem 'google-cloud-storage', '~> 1.34', '>= 1.34.1'
+gem 'ransack', '~> 2.4', '>= 2.4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
