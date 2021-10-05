@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :find_categories, unless: :backend?
   before_action :set_locale
+  before_action :set_ransack
   helper_method :current_cart
   helper_method :local_datetime
 
@@ -22,10 +23,6 @@ class ApplicationController < ActionController::Base
     @categories = Category.order(position: :asc)
   end
 
-  def current_cart
-    @cart ||= Cart.from_hash(session[:cart_session])
-  end
-
   def set_locale
     if params[:locale] && I18n.available_locales.include?( params[:locale].to_sym )
       session[:locale] = params[:locale]
@@ -34,7 +31,16 @@ class ApplicationController < ActionController::Base
     I18n.locale = session[:locale] || I18n.default_locale
   end
 
+  def set_ransack
+    @q = Product.ransack(params[:q])
+  end
+
+  def current_cart
+    @cart ||= Cart.from_hash(session[:cart_session])
+  end
+
   def local_datetime(updated_at)
     updated_at.localtime.strftime("%Y-%m-%d %H:%M")
   end
+
 end

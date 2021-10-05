@@ -1,3 +1,5 @@
-<%= render 'shared/frontend/carousel', products: @products %>
+<% if params[:q].nil? %>
+  <%= render 'shared/frontend/carousel', products: @products %>
+<% end %>
 <%= render 'shared/frontend/product_list', products: @products %>
 <%= render 'shared/frontend/google_map' %>

@@ -4,24 +4,26 @@
       <%= image_pack_tag 'shopify_logo.png', size: '160', style: 'margin-left: 10px; margin-top: 4px;' %>
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start hidden">
+  <div id="navbarBasic" class="navbar-menu">
+    <div class="navbar-start">
       <div class="navbar-item field has-addons">
-        <div class="control">
-          <input class="input" type="text" placeholder="<%= t('nav_bar.keyword') %>">
-        </div>
-        <div class="control">
-          <a class="button is-primary">
-            <i class="fas fa-search"></i>&nbsp; <%= t('nav_bar.search') %>
-          </a>
-        </div>
+        <form class="flex">
+          <%= search_form_for @q do |form| %>
+            <div class="control">
+              <%= form.search_field :name_or_vendor_title_cont, class: 'input', placeholder: t('nav_bar.keyword') %>
+            </div>
+            <div class="control">
+              <%= form.submit t('nav_bar.search'), class: 'button is-primary' %>
+            </div>
+          <% end %>
+        </form>
       </div>
     </div>
 
