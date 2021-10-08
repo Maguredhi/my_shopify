@@ -31,5 +31,6 @@
     </tfoot>
   </table>
   <%= link_to t('cart.continue_buy'), root_path, class: 'button' %>
-  <%= link_to t('cart.go_checkout'), checkout_cart_path, class: 'button is-danger' %>
+  <% link_to t('cart.go_checkout'), checkout_cart_path, class: 'button is-danger' %>
+  <%= link_to 'Payment', payment_cart_path, class: 'button is-primary' %>
 <% end %>

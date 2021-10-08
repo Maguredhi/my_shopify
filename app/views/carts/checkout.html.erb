@@ -33,9 +33,58 @@
       <%= form.label :note, t('cart.note'), class: 'label' %>
       <%= form.text_area :note, class: 'textarea is-medium' %>
     </div>
+
+    <% if params[:type] == 'paypal' %>
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div id="dropin-container"></div>
+            <input type="hidden" id="nonce" name="payment_method_nonce"/>
+          </div>
+        </article>
+      </div>
+    <% end %>
+
     <div class="field">
-      <%= form.submit 'LINE Pay', class: 'button line-button is-medium', data: { confirm: t('cart.checkout_confirm') } %>
+      <% if params[:type] == 'linepay' %>
+        <%= form.submit 'LINE Pay', class: 'button line-button is-medium', data: { confirm: t('cart.checkout_confirm') } %>
+      <% else %>
+        <%= form.submit 'PayPal', class: 'button paypal-button is-medium', data: { confirm: t('cart.checkout_confirm') } %>
+      <% end %>
     </div>
   <% end %>
 
 </section>
+
+<script src="https://js.braintreegateway.com/web/dropin/1.31.1/js/dropin.min.js"></script>
+
+<script>
+  document.addEventListener('turbolinks:load', function(event) {
+
+    const form = document.getElementById('payment-form');
+
+    braintree.dropin.create({
+      authorization: '<%= @token %>',
+      container: '#dropin-container'
+    }, (error, dropinInstance) => {
+      if (error) console.error(error);
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+
+        dropinInstance.requestPaymentMethod((error, payload) => {
+          if (error) console.error(error);
+
+          // Step four: when the user is ready to complete their
+          //   transaction, use the dropinInstance to get a payment
+          //   method nonce for the user's selected payment method, then add
+          //   it a the hidden field before submitting the complete form to
+          //   a server-side integration
+          document.getElementById('nonce').value = payload.nonce;
+          form.submit();
+        });
+      });
+    });
+
+  })
+</script>

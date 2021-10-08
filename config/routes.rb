@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resource :cart, only: [:show, :destroy] do
     collection do
       get :checkout
+      get :payment
     end
   end
 
