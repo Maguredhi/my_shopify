@@ -15,22 +15,12 @@ class CartsController < ApplicationController
   end
 
   def checkout
+    paypal_service = PaypalService.new
     @order = current_user.orders.build
-    @token = gateway.client_token.generate
+    @token = paypal_service.gateway.client_token.generate
   end
 
   def find_sku(sku_id)
     Sku.find(sku_id)
-  end
-
-  private
-
-  def gateway
-    Braintree::Gateway.new(
-      environment: :sandbox,
-      merchant_id: ENV['braintree_merchant_id'],
-      public_key: ENV['braintree_public_key'],
-      private_key: ENV['braintree_private_key'],
-    )
   end
 end

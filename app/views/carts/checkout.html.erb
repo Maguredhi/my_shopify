@@ -8,7 +8,7 @@
     <strong>* <%= t('cart.have_to_input') %></strong>
   </div>
 
-  <%= form_with(model: @order) do |form| %>
+  <%= form_with(model: @order, id: 'payment-form') do |form| %>
     <div class="columns">
       <div class="column">
         <div class="field">
@@ -39,6 +39,7 @@
         <article class="media">
           <div class="media-content">
             <div id="dropin-container"></div>
+            <!-- paypal token -->
             <input type="hidden" id="nonce" name="payment_method_nonce"/>
           </div>
         </article>
@@ -46,10 +47,11 @@
     <% end %>
 
     <div class="field">
-      <% if params[:type] == 'linepay' %>
-        <%= form.submit 'LINE Pay', class: 'button line-button is-medium', data: { confirm: t('cart.checkout_confirm') } %>
-      <% else %>
+      <%= form.hidden_field :payment, value: params[:type] %>
+      <% if params[:type] == 'paypal' %>
         <%= form.submit 'PayPal', class: 'button paypal-button is-medium', data: { confirm: t('cart.checkout_confirm') } %>
+      <% else %>
+        <%= form.submit 'LINE Pay', class: 'button line-button is-medium', data: { confirm: t('cart.checkout_confirm') } %>
       <% end %>
     </div>
   <% end %>
