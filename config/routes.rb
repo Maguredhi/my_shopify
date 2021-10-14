@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       delete :cancel    # /orders/id/cancel
       post :pay         # /orders/id/pay
       get :pay_confirm  # /orders/id/pay_confirm
+      post :paypal_pay  # /orders/id/paypal_pay
     end
     collection do
       get :confirm  # /orders/confirm

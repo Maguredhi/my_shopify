@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_ransack
   helper_method :current_cart
   helper_method :local_datetime
+  helper_method :find_sku
 
   private
 
@@ -43,4 +44,7 @@ class ApplicationController < ActionController::Base
     updated_at.localtime.strftime("%Y-%m-%d %H:%M")
   end
 
+  def find_sku(sku_id)
+    Sku.find(sku_id)
+  end
 end

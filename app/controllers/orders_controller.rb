@@ -1,9 +1,14 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_order, only: [:cancel, :pay, :pay_confirm]
+  before_action :find_order, only: [:show, :pay, :pay_confirm, :paypal_pay, :cancel]
 
   def index
     @orders = current_user.orders.order(id: :desc)
+  end
+
+  def show
+    paypal_service = PaypalService.new
+    @token = paypal_service.gateway.client_token.generate
   end
 
   # paypal 只會有 create pay cancel 三種 action
@@ -21,9 +26,9 @@ class OrdersController < ApplicationController
       linepay.perform({
         productName: "My_Shpoify",
         amount: current_cart.total_price.to_i,
-        currency: "JPY",
-        confirmUrl: "https://my-shopify-rails.herokuapp.com/orders/confirm",
-        # confirmUrl: "http://localhost:3000/orders/confirm",
+        currency: "TWD",
+        # confirmUrl: "https://my-shopify-rails.herokuapp.com/orders/confirm",
+        confirmUrl: "http://localhost:3000/orders/confirm",
         orderId: @order.num
       })
 
@@ -58,7 +63,7 @@ class OrdersController < ApplicationController
     linepay = LinepayService.new("/payments/#{params[:transactionId]}/confirm")
     linepay.perform({
       amount: current_cart.total_price.to_i,
-      currency: "JPY"
+      currency: "TWD"
     })
 
     if linepay.success?
@@ -106,9 +111,24 @@ class OrdersController < ApplicationController
     end
   end
 
-  # def paypal_pay
-  #   find_order
-  # end
+  def paypal_pay
+    nonce = params[:payment_method_nonce]
+    paypal_service = PaypalService.new
+
+    paypal = paypal_service.gateway.transaction.sale(
+    amount: @order.total_price.to_i,
+    payment_method_nonce: nonce,
+    options: {
+      submit_for_settlement: true
+    }
+  )
+    if paypal.success?
+      @order.pay!
+      redirect_to root_path, notice: t('cart.checkout_done')
+    else
+      redirect_to root_path, notice: '付款發生錯誤'
+    end
+  end
 
   def cancel
     if @order.paid?

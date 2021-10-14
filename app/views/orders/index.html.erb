@@ -18,8 +18,7 @@
         <td><%= order.total_price %></td>
         <td><%= order.state %></td>
         <td>
-          <%= link_to t('button.pay'), pay_order_path(order), method: 'post', data: {confirm: "確認付款？"}, class: 'button is-primary is-small' if order.may_pay? %>
-          <%= link_to t('button.cancel'), cancel_order_path(order), method: 'delete', data: {confirm: "確認取消訂單？\n如果訂單已付款將會進行退費"}, class: 'button is-danger is-small' if order.may_cancel? %>
+          <%= link_to '詳細', order_path(order), class: 'button is-info is-small', data: { turbolinks: false } %>
         </td>
       </tr>
     <% end %>

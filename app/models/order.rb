@@ -2,8 +2,8 @@ class Order < ApplicationRecord
   include AASM
 
   enum payment: {
-    linepay: 0,
-    paypal: 1
+    'LINE Pay': 0,
+    'PayPal': 1
   }
 
   belongs_to :user
@@ -22,7 +22,7 @@ class Order < ApplicationRecord
       transitions from: :pending, to: :paid
 
       before do |args|
-        self.transaction_id = args[:transaction_id] if payment == 'linepay'
+        self.transaction_id = args[:transaction_id] if payment == 'Line Pay'
         self.paid_at = Time.now
       end
     end
