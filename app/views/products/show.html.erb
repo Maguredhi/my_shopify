@@ -25,7 +25,7 @@
     <div class="column is-5" data-controller="product" data-product-id="<%= @product.code %>">
       <h3 class="has-text-grey-light"><%= @product.vendor.title %></h3>
       <h2 class="title is-4"><%= @product.name %></h2>
-      <p class="has-text-primary is-size-4">
+      <p class="has-text-dark is-size-4">
         <%= t('product.list_price') %>：<span class="list-price"><%= @product.list_price %></span>
       </p>
       <p class="has-text-danger is-size-4">

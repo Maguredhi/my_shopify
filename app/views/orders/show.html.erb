@@ -1,15 +1,20 @@
 <section class="section" data-controller="trigger">
-  <p class="tag is-primary is-light is-medium">訂單： <%= @order.num %></p>
+  <p class="tag is-primary is-light is-medium"><%= t('order.order_number') %>： <%= @order.num %></p>
   <article class="message is-primary">
     <div class="message-header">
-      <p>購買資訊</p>
+      <p><%= t('order.order_info')%></p>
     </div>
     <div class="message-body">
       <table class="table is-fullwidth">
         <thead>
           <tr>
             <th><%= t('product.item') %></th>
-            <th><%= t('product.list_price') %> / <%= t('product.sell_price') %></th>
+            <th>
+              <div class="tags has-addons">
+                <span class="tag"><%= t('product.list_price') %></span>
+                <span class="tag is-danger"><%= t('product.sell_price') %></span>
+              </div>
+            </th>
             <th>Sku</th>
             <th><%= t('product.quantity') %></th>
             <th><%= t('cart.subtotal') %></th>
@@ -29,8 +34,12 @@
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="4"><%= t('cart.total_price') %></td>
-            <td><%= @order.total_price %></td>
+            <td colspan="4">
+              <strong><%= t('cart.total_price') %></strong>
+            </td>
+            <td>
+              <strong><%= @order.total_price %></strong>
+            </td>
           </tr>
         </tfoot>
       </table>
@@ -39,18 +48,18 @@
 
   <article class="message is-info">
     <div class="message-header">
-      <p>收件人資訊</p>
+      <p><%= t('order.order_info')%></p>
     </div>
     <div class="message-body">
       <table class="table is-fullwidth">
         <thead>
           <tr>
-            <th>recipient</th>
-            <th>tel</th>
-            <th>address</th>
-            <th>note</th>
-            <th>state</th>
-            <th>payment</th>
+            <th><%= t('order.recipient')%></th>
+            <th><%= t('order.tel')%></th>
+            <th><%= t('order.address')%></th>
+            <th><%= t('order.note')%></th>
+            <th><%= t('order.state')%></th>
+            <th><%= t('order.payment')%></th>
           </tr>
         </thead>
         <tbody>
@@ -59,19 +68,21 @@
             <td><%= @order.tel %></td>
             <td><%= @order.address %></td>
             <td><%= @order.note %></td>
-            <td><%= @order.state %></td>
-            <td><%= @order.payment %></td>
+            <td><%= state_format(@order.state) %></td>
+            <td>
+              <strong><%= payment_format(@order.payment) %></strong>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </article>
-  <%= link_to '返回', orders_path, class: 'button is-link is-medium' %>
-  <%= link_to t('button.cancel'), cancel_order_path(@order), method: 'delete', data: { confirm: "確認取消訂單？\n如果訂單已付款將會進行退費" }, class: 'button is-danger is-medium mx-4' if @order.may_cancel? %>
+  <%= link_to t('button.back'), orders_path, class: 'button is-link is-medium' %>
+  <%= link_to t('button.pay_cancel'), cancel_order_path(@order), method: 'delete', data: { confirm: "確認取消訂單？\n如果訂單已付款將會進行退費" }, class: 'button is-danger is-medium mx-4' if @order.may_cancel? %>
   <% if @order.payment == 'LINE Pay' %>
     <%= link_to t('button.pay'), pay_order_path(@order), method: 'post', data: { confirm: "確認付款？" }, class: 'button is-primary is-medium' if @order.may_pay? %>
   <% else %>
-    <%= tag.button '付款', class: 'button is-primary is-medium', data: { action: 'trigger#switch' } if @order.may_pay? %>
+    <%= tag.button t('button.pay'), class: 'button is-primary is-medium', data: { action: 'trigger#switch' } if @order.may_pay? %>
   <% end %>
 
   <%= form_tag paypal_pay_order_path(@order), id: 'payment-form', class: 'hidden', data: { trigger_target: 'creditCard' } do %>

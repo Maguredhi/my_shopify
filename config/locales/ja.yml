@@ -6,6 +6,12 @@ ja:
     add_cart: カートに入れる
     pay: 購入手続きへ
     cancel: キャンセル
+    pay_cancel: 注文キャンセル
+    payment: 支払い方法
+    linepay: LINE Pay で支払い
+    paypal: PayPal で支払い
+    detail: 内容
+    back: 戻る
   nav_bar:
     search: 検索
     keyword: キーワードで探す
@@ -48,7 +54,7 @@ ja:
     continue_buy: お買い物を続ける
     subtotal: 小計
     total_price: 商品合計
-    go_checkout: 購入手続きへ
+    payment: 支払い方法
     checkout: お会計
     info: 配送先情報
     recipient: 受取人
@@ -63,8 +69,18 @@ ja:
     date: 日付
     order_number: 注文番号
     order_price: 注文金額
-    status: 状態
+    state: 状態
+    payment: 支払い方法
+    paid: 支払い完了
+    pending: 購入手続きへ
+    cancelled: キャンセルした
     feature: 機能
+    order_info: 注文内容
+    recipient_info: 受取人について
+    recipient: 受取人
+    address: ご住所
+    tel: 電話番号
+    note: お問合わせ
   notice:
     clear_cart_message: 全て商品をカートから削除しました。
   admin:

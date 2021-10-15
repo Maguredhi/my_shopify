@@ -40,8 +40,8 @@ class ApplicationController < ActionController::Base
     @cart ||= Cart.from_hash(session[:cart_session])
   end
 
-  def local_datetime(updated_at)
-    updated_at.localtime.strftime("%Y-%m-%d %H:%M")
+  def local_datetime(datetime)
+    datetime.localtime.strftime("%Y-%m-%d %H:%M")
   end
 
   def find_sku(sku_id)

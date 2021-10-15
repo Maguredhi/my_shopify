@@ -131,7 +131,7 @@ class OrdersController < ApplicationController
   end
 
   def cancel
-    if @order.paid?
+    if @order.paid? && @order.payment == 'linepay'
       # 退款
       linepay = LinepayService.new("/payments/#{@order.transaction_id}/refund")
       linepay.perform(refundAmount: @order.total_price.to_i)

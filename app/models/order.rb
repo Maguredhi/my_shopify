@@ -2,8 +2,8 @@ class Order < ApplicationRecord
   include AASM
 
   enum payment: {
-    'LINE Pay': 0,
-    'PayPal': 1
+    'linepay': 0,
+    'paypal': 1
   }
 
   belongs_to :user
@@ -22,7 +22,7 @@ class Order < ApplicationRecord
       transitions from: :pending, to: :paid
 
       before do |args|
-        self.transaction_id = args[:transaction_id] if payment == 'Line Pay'
+        self.transaction_id = args[:transaction_id] if payment == 'linepay'
         self.paid_at = Time.now
       end
     end
@@ -42,6 +42,7 @@ class Order < ApplicationRecord
 
   private
   def generate_order_num
-    self.num = SecureRandom.hex(5)
+    time = Time.zone.now
+    self.num = time.to_formatted_s(:number) + SecureRandom.hex(1)
   end
 end
