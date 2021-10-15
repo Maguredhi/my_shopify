@@ -1,7 +1,9 @@
 class CartsController < ApplicationController
   # 有登入才可以進來這 controller
   before_action :authenticate_user!
-  helper_method :find_sku
+
+  def payment
+  end
 
   def show
   end
@@ -12,10 +14,8 @@ class CartsController < ApplicationController
   end
 
   def checkout
+    paypal_service = PaypalService.new
     @order = current_user.orders.build
-  end
-
-  def find_sku(sku_id)
-    Sku.find(sku_id)
+    @token = paypal_service.gateway.client_token.generate
   end
 end

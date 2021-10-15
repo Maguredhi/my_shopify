@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resource :cart, only: [:show, :destroy] do
     collection do
       get :checkout
+      get :payment
     end
   end
 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
       delete :cancel    # /orders/id/cancel
       post :pay         # /orders/id/pay
       get :pay_confirm  # /orders/id/pay_confirm
+      post :paypal_pay  # /orders/id/paypal_pay
     end
     collection do
       get :confirm  # /orders/confirm

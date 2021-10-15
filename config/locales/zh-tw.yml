@@ -6,6 +6,12 @@ zh-TW:
     add_cart: 加到購物車
     pay: 付款
     cancel: 取消
+    pay_cancel: 取消付款
+    payment: 付款方式
+    linepay: 使用 LINE Pay
+    paypal: 使用 PayPal
+    detail: 詳細
+    back: 返回
   nav_bar:
     search: 搜尋
     keyword: 請輸入關鍵字
@@ -48,7 +54,7 @@ zh-TW:
     continue_buy: 繼續選購
     subtotal: 小計
     total_price: 總價
-    go_checkout: 進行結帳
+    payment: 付款方式
     checkout: 結帳
     info: 收件人資訊
     recipient: 收件人
@@ -63,8 +69,18 @@ zh-TW:
     date: 日期
     order_number: 訂單編號
     order_price: 訂單金額
-    status: 狀態
+    state: 狀態
+    payment: 付款方式
+    paid: 已付款
+    pending: 待付款
+    cancelled: 已取消
     feature: 功能
+    order_info: 訂單資訊
+    recipient_info: 收件人資訊
+    recipient: 收件人
+    address: 地址
+    tel: 電話
+    note: 備註
   notice:
     clear_cart_message: 購物車已清空。
   admin:

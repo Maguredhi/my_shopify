@@ -1,0 +1,129 @@
+<section class="section" data-controller="trigger">
+  <p class="tag is-primary is-light is-medium"><%= t('order.order_number') %>： <%= @order.num %></p>
+  <article class="message is-primary">
+    <div class="message-header">
+      <p><%= t('order.order_info')%></p>
+    </div>
+    <div class="message-body">
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th><%= t('product.item') %></th>
+            <th>
+              <div class="tags has-addons">
+                <span class="tag"><%= t('product.list_price') %></span>
+                <span class="tag is-danger"><%= t('product.sell_price') %></span>
+              </div>
+            </th>
+            <th>Sku</th>
+            <th><%= t('product.quantity') %></th>
+            <th><%= t('cart.subtotal') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- orders has_many order_items，所以有 order_items 方法可用 -->
+          <% @order.order_items.each do |order_item| %>
+            <tr>
+              <td><%= find_product(order_item.product_id).name %></td>
+              <td>
+                <%= find_product(order_item.product_id).list_price %> / <span class="has-text-danger-dark"><%= find_product(order_item.product_id).sell_price %></span>
+              </td>
+              <td><%= find_sku(order_item.sku_id).spec %></td>
+              <td><%= order_item.quantity %></td>
+              <td><%= order_item.total_price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <strong><%= t('cart.total_price') %></strong>
+            </td>
+            <td>
+              <strong><%= @order.total_price %></strong>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </article>
+
+  <article class="message is-info">
+    <div class="message-header">
+      <p><%= t('order.order_info')%></p>
+    </div>
+    <div class="message-body">
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th><%= t('order.recipient')%></th>
+            <th><%= t('order.tel')%></th>
+            <th><%= t('order.address')%></th>
+            <th><%= t('order.note')%></th>
+            <th><%= t('order.state')%></th>
+            <th><%= t('order.payment')%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @order.recipient %></td>
+            <td><%= @order.tel %></td>
+            <td><%= @order.address %></td>
+            <td><%= @order.note %></td>
+            <td><%= state_format(@order.state) %></td>
+            <td>
+              <strong><%= payment_format(@order.payment) %></strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+  <%= link_to t('button.back'), orders_path, class: 'button is-link is-medium' %>
+  <%= link_to t('button.pay_cancel'), cancel_order_path(@order), method: 'delete', data: { confirm: "確認取消訂單？\n如果訂單已付款將會進行退費" }, class: 'button is-danger is-medium mx-4' if @order.may_cancel? %>
+  <% if @order.payment == 'LINE Pay' %>
+    <%= link_to t('button.pay'), pay_order_path(@order), method: 'post', data: { confirm: "確認付款？" }, class: 'button is-primary is-medium' if @order.may_pay? %>
+  <% else %>
+    <%= tag.button t('button.pay'), class: 'button is-primary is-medium', data: { action: 'trigger#switch' } if @order.may_pay? %>
+  <% end %>
+
+  <%= form_tag paypal_pay_order_path(@order), id: 'payment-form', class: 'hidden', data: { trigger_target: 'creditCard' } do %>
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div id="dropin-container"></div>
+          <!-- paypal token -->
+          <input type="hidden" id="nonce" name="payment_method_nonce"/>
+        </div>
+      </article>
+    </div>
+    <% link_to t('button.pay'), paypal_pay_order_path(@order), class: 'button is-primary is-medium' if @order.may_pay? %>
+    <input type="submit" value="PayPal" class="button paypal-button is-medium">
+  <% end %>
+</section>
+
+<script src="https://js.braintreegateway.com/web/dropin/1.31.1/js/dropin.min.js"></script>
+<script>
+  document.addEventListener('turbolinks:load', function(event) {
+
+    const form = document.getElementById('payment-form');
+
+    braintree.dropin.create({
+      authorization: '<%= @token %>',
+      container: '#dropin-container'
+    }, (error, dropinInstance) => {
+      if (error) console.error(error);
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+
+        dropinInstance.requestPaymentMethod((error, payload) => {
+          if (error) console.error(error);
+          document.getElementById('nonce').value = payload.nonce;
+          form.submit();
+        });
+      });
+    });
+
+  })
+</script>

@@ -1,7 +1,13 @@
 class Order < ApplicationRecord
   include AASM
 
+  enum payment: {
+    'linepay': 0,
+    'paypal': 1
+  }
+
   belongs_to :user
+  # 建立關聯並可使用 order_items.build 方法
   has_many :order_items
 
   validates :recipient, :tel, :address, presence: true
@@ -17,7 +23,7 @@ class Order < ApplicationRecord
       transitions from: :pending, to: :paid
 
       before do |args|
-        self.transaction_id = args[:transaction_id]
+        self.transaction_id = args[:transaction_id] if payment == 'linepay'
         self.paid_at = Time.now
       end
     end
@@ -37,6 +43,7 @@ class Order < ApplicationRecord
 
   private
   def generate_order_num
-    self.num = SecureRandom.hex(5)
+    time = Time.zone.now
+    self.num = time.to_formatted_s(:number) + SecureRandom.hex(1)
   end
 end
