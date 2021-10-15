@@ -7,6 +7,7 @@ class Order < ApplicationRecord
   }
 
   belongs_to :user
+  # 建立關聯並可使用 order_items.build 方法
   has_many :order_items
 
   validates :recipient, :tel, :address, presence: true

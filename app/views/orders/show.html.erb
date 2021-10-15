@@ -24,11 +24,13 @@
           <!-- orders has_many order_items，所以有 order_items 方法可用 -->
           <% @order.order_items.each do |order_item| %>
             <tr>
-              <td>X</td>
-              <td>X / X</td>
+              <td><%= find_product(order_item.product_id).name %></td>
+              <td>
+                <%= find_product(order_item.product_id).list_price %> / <span class="has-text-danger-dark"><%= find_product(order_item.product_id).sell_price %></span>
+              </td>
               <td><%= find_sku(order_item.sku_id).spec %></td>
               <td><%= order_item.quantity %></td>
-              <td>X</td>
+              <td><%= order_item.total_price %></td>
             </tr>
           <% end %>
         </tbody>

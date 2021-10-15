@@ -22,7 +22,7 @@
         <tr>
           <td><%= item.product.name %></td>
           <td>
-            <%= item.product.list_price %> / <span style="color:red"><%= item.product.sell_price %></span>
+            <%= item.product.list_price %> / <span class="has-text-danger-dark"><%= item.product.sell_price %></span>
           </td>
           <td><%= find_sku(item.sku_id).spec %></td>
           <td><%= item.quantity %></td>

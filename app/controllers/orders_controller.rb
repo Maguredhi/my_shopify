@@ -15,8 +15,9 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.build(order_params)
 
+    # 把 current_cart 的東西撈出來，準備 create 進 order_items table 裡
     current_cart.items.each do |item|
-      @order.order_items.build(sku_id: item.sku_id, quantity: item.quantity)
+      @order.order_items.build(sku_id: item.sku_id, quantity: item.quantity, product_id: item.product_id)
     end
 
     if params[:commit] == "LINE Pay"
@@ -26,9 +27,9 @@ class OrdersController < ApplicationController
       linepay.perform({
         productName: "My_Shpoify",
         amount: current_cart.total_price.to_i,
-        currency: "TWD",
-        # confirmUrl: "https://my-shopify-rails.herokuapp.com/orders/confirm",
-        confirmUrl: "http://localhost:3000/orders/confirm",
+        currency: "JPY",
+        confirmUrl: "https://my-shopify-rails.herokuapp.com/orders/confirm",
+        # confirmUrl: "http://localhost:3000/orders/confirm",
         orderId: @order.num
       })
 
@@ -63,7 +64,7 @@ class OrdersController < ApplicationController
     linepay = LinepayService.new("/payments/#{params[:transactionId]}/confirm")
     linepay.perform({
       amount: current_cart.total_price.to_i,
-      currency: "TWD"
+      currency: "JPY"
     })
 
     if linepay.success?

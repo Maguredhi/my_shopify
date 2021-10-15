@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart
   helper_method :local_datetime
   helper_method :find_sku
+  helper_method :find_product
 
   private
 
@@ -46,5 +47,9 @@ class ApplicationController < ActionController::Base
 
   def find_sku(sku_id)
     Sku.find(sku_id)
+  end
+
+  def find_product(product_id)
+    Product.find(product_id)
   end
 end
