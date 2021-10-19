@@ -25,12 +25,7 @@
           <% end %>
         </form>
         <div class="m-auto is-hidden-desktop" data-controller="cart">
-          <%= link_to cart_path do %>
-            <i class="fas fa-shopping-cart"></i>
-            <span data-cart-target="count" data-action="addToCart@document->cart#updateCart">
-              (<%= current_cart.items.count %>)
-            </span>
-          <% end %>
+          <%= render 'shared/frontend/cart_icon' %>
         </div>
       </div>
     </div>
@@ -39,12 +34,7 @@
       <div class="navbar-item">
         <% if user_signed_in? %>
           <div class="nvabar-item is-hidden-touch" data-controller="cart">
-            <%= link_to cart_path do %>
-              <i class="fas fa-shopping-cart"></i>
-              <span data-cart-target="count" data-action="addToCart@document->cart#updateCart">
-                (<%= current_cart.items.count %>)
-              </span>
-            <% end %>
+            <%= render 'shared/frontend/cart_icon' %>
           </div>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
@@ -55,6 +45,9 @@
               <%= link_to t('nav_bar.order_list'), orders_path, class: 'navbar-item' %>
               <hr class="navbar-divider">
               <%= link_to t('nav_bar.log_out'), destroy_user_session_path, method: :delete, class: 'navbar-item' %>
+              <div class="navbar-item">
+                <%= render 'shared/frontend/lang' %>
+              </div>
             </div>
           </div>
         <% else %>
@@ -70,18 +63,8 @@
           <%= link_to t('button.log_in'), new_user_session_path, class: 'button is-light' %>
         <% end %>
       </div>
-      <div class="navbar-item">
-        <% if I18n.locale.to_s == "ja"%>
-          <%= link_to locale: "zh-TW" do %>
-            <i class="fas fa-sync-alt"></i>
-            繁中
-          <% end %>
-        <% else %>
-          <%= link_to locale: "ja" do %>
-            <i class="fas fa-sync-alt"></i>
-            日本語
-          <% end %>
-        <% end %>
+      <div class="navbar-item is-hidden-touch">
+        <%= render 'shared/frontend/lang' %>
       </div>
     </div>
   </div>
