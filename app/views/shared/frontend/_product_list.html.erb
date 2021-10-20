@@ -3,22 +3,21 @@
     <div class="columns is-multiline box">
       <% products.each do |product| %>
         <div class="column is-4">
-          <div class="card product-item is-shadowless">
+          <div class="card product-item is-shadowless mb-4">
 
-            <div class="card-image">
-              <figure class="image">
-                <%= link_to product do %>
-                  <%= image_tag product.cover_image.variant(resize: '430x290') if product.cover_image.attached? %>
-                <% end %>
-              </figure>
-            </div>
-
-            <div class="card-content">
-              <div class="content">
-                <h4 class="is-size-6"><%= t('product.store_name') %>：<%= product.vendor.title %></h4>
-                <p><%= link_to product.name, product, class: 'has-text-dark' %></p>
+            <%= link_to product do %>
+              <div class="card-image">
+                <figure class="image">
+                    <%= image_tag product.cover_image.variant(resize: '430x290') if product.cover_image.attached? %>
+                </figure>
               </div>
-            </div>
+              <div class="message is-dark">
+                <div class="message-body">
+                  <h4 class="is-size-6"><%= t('product.store_name') %>：<%= product.vendor.title %></h4>
+                  <p class="has-text-dark is-size-5"><%= product.name %></p>
+                </div>
+              </div>
+            <% end %>
 
           </div>
         </div>

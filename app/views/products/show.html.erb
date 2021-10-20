@@ -15,28 +15,38 @@
           <%= image_tag @product.cover_image.variant(resize: '770x520') if @product.cover_image.attached? %>
         </figure>
       </div>
-
-      <article class="content my-4">
-        <h4 class="my-4"><%= t('product.description') %></h4>
-        <p><%= @product.description %></p>
+      <div class="my-4"></div>
+      <article class="message">
+        <div class="message-header">
+          <p><%= t('product.description') %></p>
+        </div>
+        <div class="message-body">
+          <%= @product.description %>
+        </div>
       </article>
     </div>
 
     <div class="column is-5" data-controller="product" data-product-id="<%= @product.code %>">
       <h3 class="has-text-grey-light"><%= @product.vendor.title %></h3>
       <h2 class="title is-4"><%= @product.name %></h2>
-      <p class="has-text-dark is-size-4">
-        <%= t('product.list_price') %>：<span class="list-price"><%= @product.list_price %></span>
-      </p>
-      <p class="has-text-danger is-size-4">
-        <%= t('product.sell_price') %>：<span class="sell-price"><%= @product.sell_price %></span>
-      </p>
+      <div class="inline-block mr-2">
+        <div class="tags has-addons">
+          <span class="tag is-dark is-medium"><%= t('product.list_price') %></span>
+          <span class="tag is-light is-medium line-through"><%= @product.list_price.to_i %></span>
+        </div>
+      </div>
+      <div class="inline-block">
+        <div class="tags has-addons">
+          <span class="tag is-danger is-medium"><%= t('product.sell_price') %></span>
+          <span class="tag is-danger is-light is-medium"><%= @product.sell_price.to_i %></span>
+        </div>
+      </div>
       <hr>
 
       <% if @product.skus.any? %>
         <div class="field">
           <div class="columns">
-            <div class="column is-3 is-size-4 has-text-right">
+            <div class="column is-3 is-size-4">
               <%= t('product.item') %>
             </div>
             <div class="column is-9 field is-grouped">
@@ -52,7 +62,7 @@
       <% end %>
 
       <div class="columns">
-        <div class="column is-3 is-size-4 has-text-right">
+        <div class="column is-3 is-size-4">
           <%= t('product.quantity') %>
         </div>
         <div class="column is-9 field is-grouped">

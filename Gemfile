@@ -41,6 +41,7 @@ gem 'rails-i18n', '~> 6.0'
 gem 'google-cloud-storage', '~> 1.34', '>= 1.34.1'
 gem 'ransack', '~> 2.4', '>= 2.4.2'
 gem "braintree", "~> 4.3.0"
+gem 'pagy', '~> 5.0', '>= 5.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

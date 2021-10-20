@@ -1,14 +1,14 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["creditCard"]
+  static targets = ["object"]
 
   switch(event) {
     event.preventDefault()
-    if (this.creditCardTarget.classList.length >= 1) {
-      this.creditCardTarget.classList.remove('hidden');
+    if (this.objectTarget.classList.contains('hidden')) {
+      this.objectTarget.classList.remove('hidden');
     } else {
-      this.creditCardTarget.classList.add('hidden');
+      this.objectTarget.classList.add('hidden');
     };
   }
 }

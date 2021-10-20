@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
   before_action :find_order, only: [:show, :pay, :pay_confirm, :paypal_pay, :cancel]
 
   def index
-    @orders = current_user.orders.order(id: :desc)
+    # @orders = current_user.orders.order(id: :desc)
+    @pagy, @orders = pagy(current_user.orders.order(id: :desc), items: 10)
   end
 
   def show

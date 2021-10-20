@@ -1,0 +1,11 @@
+<% if I18n.locale.to_s == "ja"%>
+  <%= link_to locale: "zh-TW" do %>
+    <i class="fas fa-sync-alt"></i>
+    繁中
+  <% end %>
+<% else %>
+  <%= link_to locale: "ja" do %>
+    <i class="fas fa-sync-alt"></i>
+    日本語
+  <% end %>
+<% end %>
