@@ -44,6 +44,7 @@ class Order < ApplicationRecord
   private
   def generate_order_num
     time = Time.zone.now
-    self.num = time.to_formatted_s(:number) + SecureRandom.hex(1)
+    # self.num = time.to_formatted_s(:number) + SecureRandom.hex(1)
+    self.num = time.strftime("%Y%m%d") + SecureRandom.hex(3)
   end
 end

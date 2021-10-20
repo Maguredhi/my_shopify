@@ -4,77 +4,80 @@
     <div class="message-header">
       <p><%= t('order.order_info')%></p>
     </div>
-    <table class="table is-fullwidth">
-      <thead>
-        <tr>
-          <th><%= t('product.item') %></th>
-          <th>
-            <span class="tag is-danger is-light"><%= t('product.sell_price') %></span>
-          </th>
-          <th>Sku</th>
-          <th><%= t('product.quantity') %></th>
-          <th><%= t('cart.subtotal') %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- orders has_many order_items，所以有 order_items 方法可用 -->
-        <% @order.order_items.each do |order_item| %>
+    <div class="overflow-x-auto">
+      <table class="table is-fullwidth">
+        <thead>
           <tr>
-            <td><%= find_product(order_item.product_id).name %></td>
-            <td>
-              <span class="has-text-danger-dark ml-2"><%= find_product(order_item.product_id).sell_price.to_i %></span>
-            </td>
-            <td><%= find_sku(order_item.sku_id).spec %></td>
-            <td><%= order_item.quantity %></td>
-            <td><%= order_item.total_price %></td>
+            <th><%= t('product.item') %></th>
+            <th>
+              <div class="tags has-addons">
+                <span class="tag"><%= t('product.list_price') %></span>
+                <span class="tag is-danger"><%= t('product.sell_price') %></span>
+              </div>
+            </th>
+            <th>Sku</th>
+            <th><%= t('product.quantity') %></th>
+            <th><%= t('cart.subtotal') %></th>
           </tr>
-        <% end %>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="4">
-            <strong><%= t('cart.total_price') %></strong>
-          </td>
-          <td>
-            <strong><%= @order.total_price %></strong>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
+        </thead>
+        <tbody>
+          <!-- orders has_many order_items，所以有 order_items 方法可用 -->
+          <% @order.order_items.each do |order_item| %>
+            <tr>
+              <td><%= find_product(order_item.product_id).name %></td>
+              <td>
+                <%= find_product(order_item.product_id).list_price %> / <span class="has-text-danger-dark"><%= find_product(order_item.product_id).sell_price %></span>
+              </td>
+              <td><%= find_sku(order_item.sku_id).spec %></td>
+              <td><%= order_item.quantity %></td>
+              <td><%= order_item.total_price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <strong><%= t('cart.total_price') %></strong>
+            </td>
+            <td>
+              <strong><%= @order.total_price %></strong>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   </article>
 
   <article class="message is-info">
     <div class="message-header">
       <p><%= t('order.order_info')%></p>
     </div>
-    <table class="table is-fullwidth">
-      <tr>
-        <th style="width: 100px"><%= t('order.recipient')%></th>
-        <td><%= @order.recipient %></td>
-      </tr>
-      <tr>
-        <th><%= t('order.tel')%></th>
-        <td><%= @order.tel %></td>
-      </tr>
-      <tr>
-        <th><%= t('order.address')%></th>
-        <td><%= @order.address %></td>
-      </tr>
-      <tr>
-        <th><%= t('order.note')%></th>
-        <td><%= @order.note %></td>
-      </tr>
-      <tr>
-        <th><%= t('order.state')%></th>
-        <td><%= state_format(@order.state) %></td>
-      </tr>
-      <tr>
-        <th><%= t('order.payment')%></th>
-        <td>
-          <strong><%= payment_format(@order.payment) %></strong>
-        </td>
-      </tr>
-    </table>
+    <div class="table-container">
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th><%= t('order.recipient')%></th>
+            <th><%= t('order.tel')%></th>
+            <th><%= t('order.address')%></th>
+            <th><%= t('order.note')%></th>
+            <th><%= t('order.state')%></th>
+            <th><%= t('order.payment')%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @order.recipient %></td>
+            <td><%= @order.tel %></td>
+            <td><%= @order.address %></td>
+            <td><%= @order.note %></td>
+            <td><%= state_format(@order.state) %></td>
+            <td>
+              <strong><%= payment_format(@order.payment) %></strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </article>
 
   <%= link_to t('button.back'), orders_path, class: 'button is-link is-medium' %>

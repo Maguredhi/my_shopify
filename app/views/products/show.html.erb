@@ -29,12 +29,18 @@
     <div class="column is-5" data-controller="product" data-product-id="<%= @product.code %>">
       <h3 class="has-text-grey-light"><%= @product.vendor.title %></h3>
       <h2 class="title is-4"><%= @product.name %></h2>
-      <p class="has-text-dark is-size-4">
-        <%= t('product.list_price') %>：<span class="list-price"><%= @product.list_price %></span>
-      </p>
-      <p class="has-text-danger is-size-4">
-        <%= t('product.sell_price') %>：<span class="sell-price"><%= @product.sell_price %></span>
-      </p>
+      <div class="inline-block mr-2">
+        <div class="tags has-addons">
+          <span class="tag is-dark is-medium"><%= t('product.list_price') %></span>
+          <span class="tag is-light is-medium line-through"><%= @product.list_price.to_i %></span>
+        </div>
+      </div>
+      <div class="inline-block">
+        <div class="tags has-addons">
+          <span class="tag is-danger is-medium"><%= t('product.sell_price') %></span>
+          <span class="tag is-danger is-light is-medium"><%= @product.sell_price.to_i %></span>
+        </div>
+      </div>
       <hr>
 
       <% if @product.skus.any? %>

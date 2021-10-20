@@ -36,8 +36,16 @@ body {
   display: flex;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .overflow-hidden {
   overflow: hidden;
+}
+
+.line-through {
+  text-decoration: line-through;
 }
 
 .main-light-color {
@@ -64,6 +72,17 @@ section.subscribe {
   }
 }
 
+.cart-position {
+  position: absolute;
+  right: 60px;
+  bottom: 18px;
+}
+
+.relative {
+  position: relative;
+}
+
+// margin
 .m-auto {
   margin: auto;
 }
@@ -98,7 +117,13 @@ section.subscribe {
   margin-right: 8px;
 }
 
+// padding
 .py-4 {
   padding-top: 8px;
   padding-bottom: 8px;
+}
+
+.px-1 {
+  padding-left: 2px;
+  padding-right: 2px;
 }

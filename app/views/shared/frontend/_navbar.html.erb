@@ -1,10 +1,13 @@
-<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+<nav class="navbar has-shadow" role="navigation" aria-label="main navigation" data-controller="trigger">
   <div class="navbar-brand">
     <a class="" href="/">
       <%= image_pack_tag 'shopify_logo.png', size: '160', style: 'margin-left: 10px; margin-top: 4px;' %>
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+    <div class="is-hidden-desktop cart-position" data-controller="cart" data-trigger-target="object">
+      <%= render 'shared/frontend/cart_icon' %>
+    </div>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic" data-action="trigger#switch">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -24,9 +27,6 @@
             </div>
           <% end %>
         </form>
-        <div class="m-auto is-hidden-desktop" data-controller="cart">
-          <%= render 'shared/frontend/cart_icon' %>
-        </div>
       </div>
     </div>
 
@@ -45,7 +45,7 @@
               <%= link_to t('nav_bar.order_list'), orders_path, class: 'navbar-item' %>
               <hr class="navbar-divider">
               <%= link_to t('nav_bar.log_out'), destroy_user_session_path, method: :delete, class: 'navbar-item' %>
-              <div class="navbar-item">
+              <div class="navbar-item is-hidden-desktop">
                 <%= render 'shared/frontend/lang' %>
               </div>
             </div>
