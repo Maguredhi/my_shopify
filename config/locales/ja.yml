@@ -72,6 +72,7 @@ ja:
     state: 状態
     payment: 支払い方法
     paid: 支払い完了
+    back_order: 配達予定
     pending: 購入手続きへ
     cancelled: キャンセルした
     feature: 機能
