@@ -72,6 +72,7 @@ zh-TW:
     state: 狀態
     payment: 付款方式
     paid: 已付款
+    back_order: 待出貨
     pending: 待付款
     cancelled: 已取消
     feature: 功能

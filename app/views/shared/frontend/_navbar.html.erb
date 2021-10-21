@@ -51,7 +51,7 @@
             </div>
           </div>
         <% else %>
-          <div class="nvabar-item mr-4" data-controller="cart">
+          <div class="nvabar-item mr-4 is-hidden-touch" data-controller="cart">
             <%= link_to cart_path do %>
               <i class="fas fa-shopping-cart"></i>
               <span data-cart-target="count" data-action="addToCart@document->cart#updateCart">
