@@ -82,6 +82,7 @@ ja:
     address: ご住所
     tel: 電話番号
     note: お問合わせ
+    no_order: 新規注文はありません
   notice:
     clear_cart_message: 全て商品をカートから削除しました。
   admin:
