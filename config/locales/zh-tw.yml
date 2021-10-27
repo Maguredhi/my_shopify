@@ -82,6 +82,7 @@ zh-TW:
     address: 地址
     tel: 電話
     note: 備註
+    no_order: 尚無任何訂單
   notice:
     clear_cart_message: 購物車已清空。
   admin:
