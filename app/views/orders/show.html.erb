@@ -77,7 +77,7 @@
     </table>
   </article>
 
-  <%= link_to t('button.back'), orders_path, class: 'button is-link is-medium mb-4' %>
+  <%= link_to t('button.back'), orders_path, class: 'button is-link is-light is-medium mb-4' %>
   <%= link_to t('button.pay_cancel'), cancel_order_path(@order), method: 'delete', data: { confirm: "確認取消訂單？\n如果訂單已付款將會進行退費" }, class: 'button is-danger is-medium mx-4' if @order.may_cancel? %>
   <% if @order.payment == 'linepay' %>
     <%= link_to t('button.pay'), pay_order_path(@order), method: 'post', data: { confirm: "確認付款？" }, class: 'button is-primary is-medium' if @order.may_pay? %>
