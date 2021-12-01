@@ -6,7 +6,7 @@ zh-TW:
     add_cart: 加到購物車
     pay: 付款
     cancel: 取消
-    pay_cancel: 取消付款
+    pay_cancel: 取消訂單
     payment: 付款方式
     linepay: 使用 LINE Pay
     paypal: 使用 PayPal
